@@ -8,12 +8,14 @@ interface PlayersTableProps {
 
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
   const generateLineup = async () => {
-    await fetch("/api/optimize", {
+    const res = await fetch("/api/optimize", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(csvData),
     });
-    console.log("click");
+
+    const data = await res.json();
+    console.log(data);
   };
 
   return (
