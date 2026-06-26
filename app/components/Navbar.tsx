@@ -33,6 +33,9 @@ const Navbar = () => {
               <Link href={`/optimizer`}>Optimizer</Link>
             </li>
             <li>
+              <Link href={`/projections`}>Projections</Link>
+            </li>
+            <li>
               <a>Parent</a>
               <ul className="p-2">
                 <li>
@@ -57,6 +60,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link href={`/optimizer`}>Optimizer</Link>
+          </li>
+          <li>
+            <Link href={`/projections`}>Projections</Link>
           </li>
           <li>
             <details>
