@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Player } from "../types";
 
 interface PlayersTableProps {
@@ -7,6 +8,8 @@ interface PlayersTableProps {
 }
 
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
+  const [lineup, setLineup] = useState();
+
   const generateLineup = async () => {
     const res = await fetch("/api/optimize", {
       method: "POST",
@@ -15,12 +18,20 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
     });
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
+    setLineup(data);
   };
 
   return (
     <>
       <button onClick={generateLineup}>Generate Lineup</button>
+      {/* <p>{JSON.stringify(lineup)}</p> */}
+      {/* <p>{JSON.stringify(lineup["Python"])}</p> */}
+      {/* <p>{lineup.Python}</p> */}
+      {/* <p>{lineup["Python"]}</p> */}
+      {lineup?.Python.map((player, i) => {
+        return <p key={i}>{player.Name}</p>;
+      })}
       <table className="table">
         <thead>
           <tr>

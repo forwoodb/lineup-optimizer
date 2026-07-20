@@ -9,7 +9,7 @@ const ProjectionsPage = () => {
     columns: true,
     skip_empty_lines: true,
   });
-  console.log(csvData);
+  // console.log(csvData);
 
   return (
     <>
