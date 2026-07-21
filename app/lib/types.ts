@@ -1,6 +1,6 @@
 export interface Player {
-  Position: string;
   Name: string;
+  "Roster Position": string;
   ID: string;
   Salary: string;
   "Game Info": string;
