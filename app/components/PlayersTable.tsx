@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Player } from "../types";
+import { Player } from "../lib/types";
 
 interface PlayersTableProps {
   csvData: Player[];
@@ -29,8 +29,12 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
       {/* <p>{JSON.stringify(lineup["Python"])}</p> */}
       {/* <p>{lineup.Python}</p> */}
       {/* <p>{lineup["Python"]}</p> */}
-      {lineup?.Python.map((player, i) => {
-        return <p key={i}>{player.Name}</p>;
+      {lineup?.map((player, i) => {
+        return (
+          <div key={i}>
+            <p>{i + " " + player.Name + " " + player["Roster Position"]}</p>;
+          </div>
+        );
       })}
       <table className="table">
         <thead>

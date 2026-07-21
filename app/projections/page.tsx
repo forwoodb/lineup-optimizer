@@ -1,7 +1,7 @@
 import fs from "fs";
 import { parse } from "csv-parse/sync";
 import PlayersTable from "../components/PlayersTable";
-import { Player } from "../types";
+import { Player } from "../lib/types";
 
 const ProjectionsPage = () => {
   const csvFile = fs.readFileSync("./app/python/csv-data/DKSalaries.csv");
