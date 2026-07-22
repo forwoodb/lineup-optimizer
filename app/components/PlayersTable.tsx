@@ -25,10 +25,6 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
   return (
     <>
       <button onClick={generateLineup}>Generate Lineup</button>
-      {/* <p>{JSON.stringify(lineup)}</p> */}
-      {/* <p>{JSON.stringify(lineup["Python"])}</p> */}
-      {/* <p>{lineup.Python}</p> */}
-      {/* <p>{lineup["Python"]}</p> */}
       {lineup?.map((player, i) => {
         return (
           <div key={i}>
