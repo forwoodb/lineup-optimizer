@@ -21,10 +21,30 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
     setLineup(data);
   };
 
+  const handleUploadChange = (e) => {
+    const content = e.target.files;
+    console.log(content);
+  };
+
+  const handleUploadSubmit = async (formData: FormData) => {
+    console.log(formData);
+  };
+
   return (
     <>
       <div className="flex">
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
+          <form action={handleUploadSubmit}>
+            <label htmlFor="csv">Upload Projections</label>
+            <input
+              type="file"
+              name="csv"
+              id="csv"
+              accept=".csv, text/csv"
+              onChange={handleUploadChange}
+            />
+            <button className="btn">Upload</button>
+          </form>
           <table className="table">
             <thead>
               <tr>
