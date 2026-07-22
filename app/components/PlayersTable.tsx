@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Player } from "../lib/types";
+import { CSVPlayer, LineupPlayer } from "../lib/types";
 
 interface PlayersTableProps {
-  csvData: Player[];
+  csvData: CSVPlayer[];
 }
 
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
-  const [lineup, setLineup] = useState<Player[]>();
+  const [lineup, setLineup] = useState<LineupPlayer[]>();
 
   const generateLineup = async () => {
     const res = await fetch("/api/optimize", {
@@ -18,9 +18,10 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
     });
 
     const data = await res.json();
-    // console.log(data);
     setLineup(data);
   };
+
+  console.log(lineup);
 
   return (
     <>
@@ -28,7 +29,10 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
       {lineup?.map((player, i) => {
         return (
           <div key={i}>
-            <p>{i + " " + player.Name + " " + player["Roster Position"]}</p>;
+            <p>{player.Name}</p>
+            <p>{player["Roster Position"]}</p>
+            <p>{player.Salary}</p>
+            <p>{player.Points}</p>
           </div>
         );
       })}
