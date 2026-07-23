@@ -21,6 +21,25 @@ const Optimizer = ({ csvData }: OptimizerProps) => {
     setLineup(data);
   };
 
+  const positionOrder: Record<string, number> = {
+    P: 0,
+    C: 1,
+    "1B": 2,
+    "2B": 3,
+    "3B": 4,
+    SS: 5,
+    OF: 6,
+  };
+
+  const orderedLineup = lineup
+    ? [...lineup].sort((a, b) => {
+        return (
+          positionOrder[a["Roster Position"]] -
+          positionOrder[b["Roster Position"]]
+        );
+      })
+    : [];
+
   return (
     <>
       <div>
@@ -28,7 +47,7 @@ const Optimizer = ({ csvData }: OptimizerProps) => {
           Generate Lineup
         </button>
         <div className="lineup-wrapper mt-8">
-          {lineup?.map((player, i) => {
+          {orderedLineup.map((player, i) => {
             return (
               <div key={i} className="flex gap-x-4 border border-gray-200">
                 <div className="position">{player["Roster Position"]}</div>
