@@ -7,8 +7,16 @@ interface OptimizerProps {
   csvData: CSVPlayer[];
 }
 
-const Optimizer = ({ csvData }: OptimizerProps) => {
+// const Optimizer = ({ csvData }: OptimizerProps) => {
+const Optimizer = () => {
   const [lineup, setLineup] = useState<LineupPlayer[]>();
+
+  const DKSalaries = localStorage.getItem("DKSalaries");
+
+  let csvData: CSVPlayer[];
+  if (DKSalaries) {
+    csvData = JSON.parse(DKSalaries);
+  }
 
   const generateLineup = async () => {
     const res = await fetch("/api/optimize", {

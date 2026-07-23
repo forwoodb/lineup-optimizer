@@ -9,7 +9,7 @@ const FileUpload = () => {
     if (!file) return;
 
     Papa.parse(file, {
-      headers: true,
+      header: true,
       skipEmptyLines: true,
       complete: (results) => {
         localStorage.setItem("DKSalaries", JSON.stringify(results.data));
@@ -19,12 +19,16 @@ const FileUpload = () => {
   };
   return (
     <>
-      <input
-        type="file"
-        name="file"
-        onChange={handleUpload}
-        className="file-input"
-      />
+      <fieldset className="fieldset">
+        <legend className="fieldset-legend">DKSalaries</legend>
+        <input
+          type="file"
+          name="file"
+          onChange={handleUpload}
+          className="file-input"
+        />
+        {/* <label className="label">Max size 2MB</label> */}
+      </fieldset>
     </>
   );
 };

@@ -2,11 +2,14 @@
 
 import { CSVPlayer } from "../lib/types";
 
-interface PlayersTableProps {
-  csvData: CSVPlayer[];
-}
+const PlayersTable = () => {
+  const DKSalaries = localStorage.getItem("DKSalaries");
 
-const PlayersTable = ({ csvData }: PlayersTableProps) => {
+  let csvData: CSVPlayer[];
+  if (DKSalaries) {
+    csvData = JSON.parse(DKSalaries);
+  }
+
   return (
     <>
       <div className="mt-8 overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
@@ -18,7 +21,7 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
               {/* <th>Roster Position</th> */}
               <th>Pos</th>
               <th>Salary</th>
-              {/* <th>Game Info</th> */}
+              <th>Game Info</th>
               <th>Team</th>
               <th>APPG</th>
             </tr>
@@ -33,7 +36,7 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
                   <td>{player.Name}</td>
                   <td>{player["Roster Position"]}</td>
                   <td>{player.Salary}</td>
-                  {/* <td>{player["Game Info"]}</td> */}
+                  <td>{player["Game Info"]}</td>
                   <td>{player.TeamAbbrev}</td>
                   <td>{player.AvgPointsPerGame}</td>
                 </tr>

@@ -6,11 +6,17 @@ import Optimizer from "../components/Optimizer";
 import FileUpload from "../components/FileUpload";
 
 const OptimizerPage = () => {
-  const csvFile = fs.readFileSync("./app/python/csv-data/DKSalaries.csv");
-  const csvData: CSVPlayer[] = parse(csvFile, {
-    columns: true,
-    skip_empty_lines: true,
-  });
+  // const DKSalaries = localStorage.getItem("DKSalaries");
+  // // const csvFile = fs.readFileSync("./app/python/csv-data/DKSalaries.csv");
+  // // const csvData: CSVPlayer[] = parse(csvFile, {
+  // //   columns: true,
+  // //   skip_empty_lines: true,
+  // // });
+
+  // let csvData;
+  // if (DKSalaries) {
+  //   csvData = JSON.parse(DKSalaries);
+  // }
 
   return (
     <main>
@@ -18,10 +24,11 @@ const OptimizerPage = () => {
         <div className="flex-2">
           {/* <FileUploadSC /> */}
           <FileUpload />
-          <PlayersTable csvData={csvData} />
+          <PlayersTable />
+          {/* <PlayersTable csvData={csvData} /> */}
         </div>
         <div className="flex-1 ">
-          <Optimizer csvData={csvData} />
+          <Optimizer />
         </div>
       </div>
     </main>
