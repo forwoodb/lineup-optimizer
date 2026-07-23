@@ -1,14 +1,25 @@
 "use client";
 
 import { CSVPlayer } from "../lib/types";
+import { useState, useEffect } from "react";
 
 const PlayersTable = () => {
-  const DKSalaries = localStorage.getItem("DKSalaries");
+  const [csvData, setCsvData] = useState<CSVPlayer[]>([]);
 
-  let csvData: CSVPlayer[];
-  if (DKSalaries) {
-    csvData = JSON.parse(DKSalaries);
-  }
+  useEffect(() => {
+    const load = async () => {
+      const DKSalaries = localStorage.getItem("DKSalaries");
+      if (!DKSalaries) return;
+
+      const parsed = JSON.parse(DKSalaries);
+      setCsvData(parsed); // now async → safe
+    };
+
+    load();
+  }, []);
+  // const DKSalaries = localStorage.getItem("DKSalaries");
+
+  // const csvData: CSVPlayer[] = JSON.parse(DKSalaries);
 
   return (
     <>

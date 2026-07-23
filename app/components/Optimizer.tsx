@@ -3,11 +3,6 @@
 import { useState } from "react";
 import { LineupPlayer, CSVPlayer } from "../lib/types";
 
-interface OptimizerProps {
-  csvData: CSVPlayer[];
-}
-
-// const Optimizer = ({ csvData }: OptimizerProps) => {
 const Optimizer = () => {
   const [lineup, setLineup] = useState<LineupPlayer[]>();
 
