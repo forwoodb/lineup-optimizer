@@ -16,7 +16,7 @@ const ProjectionsPage = () => {
     <main>
       <div className="flex flex-col items-center">
         <h1>Optimizer Page</h1>
-        <div className="flex">
+        <div className="flex gap-8">
           <div className="">
             <FileUpload />
             <PlayersTable csvData={csvData} />

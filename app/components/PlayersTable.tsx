@@ -9,7 +9,7 @@ interface PlayersTableProps {
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
   return (
     <>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
+      <div className="mt-8 overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
         <table className="table">
           <thead>
             <tr>

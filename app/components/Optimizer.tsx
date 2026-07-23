@@ -24,14 +24,21 @@ const Optimizer = ({ csvData }: OptimizerProps) => {
   return (
     <>
       <div>
-        <button onClick={generateLineup}>Generate Lineup</button>
-        {lineup?.map((player, i) => {
-          return (
-            <div key={i}>
-              <p>{`${i} ${player.Name} ${player["Roster Position"]} ${player.Salary} ${player.Points}`}</p>
-            </div>
-          );
-        })}
+        <button onClick={generateLineup} className="btn">
+          Generate Lineup
+        </button>
+        <div className="lineup-wrapper mt-8">
+          {lineup?.map((player, i) => {
+            return (
+              <div key={i} className="flex gap-x-4 border border-gray-200">
+                <div className="position">{player["Roster Position"]}</div>
+                <div className="name">{player.Name}</div>
+                <div className="salary">{player.Salary}</div>
+                <div className="points">{player.Points}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
