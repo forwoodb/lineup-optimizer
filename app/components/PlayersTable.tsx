@@ -1,31 +1,15 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
-import { CSVPlayer, LineupPlayer } from "../lib/types";
-import FileUpload from "./FileUpload";
+import { CSVPlayer } from "../lib/types";
 
 interface PlayersTableProps {
   csvData: CSVPlayer[];
 }
 
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
-  const [lineup, setLineup] = useState<LineupPlayer[]>();
-
-  const generateLineup = async () => {
-    const res = await fetch("/api/optimize", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(csvData),
-    });
-
-    const data = await res.json();
-    setLineup(data);
-  };
-
   return (
     <>
       <div className="flex">
-        <FileUpload />
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
           <table className="table">
             <thead>
@@ -57,16 +41,6 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
               })}
             </tbody>
           </table>
-        </div>
-        <div>
-          <button onClick={generateLineup}>Generate Lineup</button>
-          {lineup?.map((player, i) => {
-            return (
-              <div key={i}>
-                <p>{`${i} ${player.Name} ${player["Roster Position"]} ${player.Salary} ${player.Points}`}</p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </>
