@@ -3,7 +3,7 @@ import { parse } from "csv-parse/sync";
 import PlayersTable from "../components/PlayersTable";
 import { CSVPlayer } from "../lib/types";
 import Optimizer from "../components/Optimizer";
-import FileUploadSC from "../components/FileUploadSC";
+import FileUpload from "../components/FileUpload";
 
 const OptimizerPage = () => {
   const csvFile = fs.readFileSync("./app/python/csv-data/DKSalaries.csv");
@@ -15,10 +15,9 @@ const OptimizerPage = () => {
   return (
     <main>
       <div className="flex gap-8 w-[96%] mt-8 m-auto ">
-        {/* <div className="flex"> */}
         <div className="flex-2">
-          {/* <div> */}
-          <FileUploadSC />
+          {/* <FileUploadSC /> */}
+          <FileUpload />
           <PlayersTable csvData={csvData} />
         </div>
         <div className="flex-1 ">
