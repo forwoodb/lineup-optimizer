@@ -13,13 +13,18 @@ const ProjectionsPage = () => {
   });
 
   return (
-    <>
-      <h1>Optimizer Page</h1>
-      <Optimizer csvData={csvData} />
-      <FileUpload />
-
-      <PlayersTable csvData={csvData} />
-    </>
+    <main>
+      <div className="flex flex-col items-center">
+        <h1>Optimizer Page</h1>
+        <div className="flex">
+          <div className="">
+            <FileUpload />
+            <PlayersTable csvData={csvData} />
+          </div>
+          <Optimizer csvData={csvData} />
+        </div>
+      </div>
+    </main>
   );
 };
 

@@ -2,8 +2,7 @@ const FileUpload = () => {
   return (
     <div>
       <form action="">
-        <label htmlFor="csv">Upload Projections</label>
-        <input type="file" name="csv" id="csv" accept=".csv, text/csv" />
+        <input type="file" className="file-input" />
         <button className="btn">Upload</button>
       </form>
     </div>
