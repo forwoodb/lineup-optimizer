@@ -14,13 +14,12 @@ const ProjectionsPage = () => {
 
   return (
     <main>
-      <div className="flex flex-col items-center">
-        <h1>Optimizer Page</h1>
-        <div className="flex gap-8">
-          <div className="">
-            <FileUpload />
-            <PlayersTable csvData={csvData} />
-          </div>
+      <div className="flex gap-8 w-full mt-8">
+        <div className="w-[75%]">
+          <FileUpload />
+          <PlayersTable csvData={csvData} />
+        </div>
+        <div className="w-[20%] border border-black">
           <Optimizer csvData={csvData} />
         </div>
       </div>

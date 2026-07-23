@@ -27,7 +27,8 @@ const Navbar = () => {
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
+            <Navlinks />
+            {/* <li>
               <Link href={`/`}>Home</Link>
             </li>
             <li>
@@ -49,7 +50,7 @@ const Navbar = () => {
             </li>
             <li>
               <a>Item 3</a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">DFS Optimizer</a>
