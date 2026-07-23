@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Navlinks from "./Navlinks";
 
 const Navbar = () => {
   return (
@@ -55,31 +56,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link href={`/`}>Home</Link>
-          </li>
-          <li>
-            <Link href={`/optimizer`}>Optimizer</Link>
-          </li>
-          <li>
-            <Link href={`/projections`}>Projections</Link>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2 bg-base-100 w-40 z-1">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          <Navlinks />
         </ul>
       </div>
       <div className="navbar-end">
