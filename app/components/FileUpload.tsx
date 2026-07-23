@@ -1,12 +1,9 @@
+"use client";
+import { useState } from "react";
+
 const FileUpload = () => {
-  return (
-    <div>
-      <form action="">
-        <input type="file" className="file-input" />
-        <button className="btn">Upload</button>
-      </form>
-    </div>
-  );
+  const [file, setFile] = useState();
+  return <div></div>;
 };
 
 export default FileUpload;

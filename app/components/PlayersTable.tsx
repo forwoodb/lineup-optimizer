@@ -15,9 +15,10 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Roster Position</th>
+              {/* <th>Roster Position</th> */}
+              <th>Pos</th>
               <th>Salary</th>
-              <th>Game Info</th>
+              {/* <th>Game Info</th> */}
               <th>Team</th>
               <th>APPG</th>
             </tr>
@@ -32,7 +33,7 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
                   <td>{player.Name}</td>
                   <td>{player["Roster Position"]}</td>
                   <td>{player.Salary}</td>
-                  <td>{player["Game Info"]}</td>
+                  {/* <td>{player["Game Info"]}</td> */}
                   <td>{player.TeamAbbrev}</td>
                   <td>{player.AvgPointsPerGame}</td>
                 </tr>

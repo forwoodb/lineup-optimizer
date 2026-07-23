@@ -45,7 +45,7 @@ const Optimizer = ({ csvData }: OptimizerProps) => {
       <button onClick={generateLineup} className="btn">
         Generate Lineup
       </button>
-      <div className="lineup-wrapper mt-8 border border-black">
+      <div className="lineup-wrapper w-full mt-8">
         {orderedLineup.map((player, i) => {
           return (
             <div
