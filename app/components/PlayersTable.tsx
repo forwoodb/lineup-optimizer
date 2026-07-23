@@ -1,7 +1,8 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { CSVPlayer, LineupPlayer } from "../lib/types";
+import FileUpload from "./FileUpload";
 
 interface PlayersTableProps {
   csvData: CSVPlayer[];
@@ -9,7 +10,6 @@ interface PlayersTableProps {
 
 const PlayersTable = ({ csvData }: PlayersTableProps) => {
   const [lineup, setLineup] = useState<LineupPlayer[]>();
-  const [file, setFile] = useState<File | null>(null);
 
   const generateLineup = async () => {
     const res = await fetch("/api/optimize", {
@@ -22,36 +22,11 @@ const PlayersTable = ({ csvData }: PlayersTableProps) => {
     setLineup(data);
   };
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
-
-  const handleFileSubmit = async (formData: FormData) => {
-    fetch("https://httpbin.org/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-  };
-
   return (
     <>
       <div className="flex">
+        <FileUpload />
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-300">
-          <form action={handleFileSubmit}>
-            <label htmlFor="csv">Upload Projections</label>
-            <input
-              type="file"
-              name="csv"
-              id="csv"
-              accept=".csv, text/csv"
-              onChange={handleFileChange}
-            />
-            <button className="btn">Upload</button>
-          </form>
           <table className="table">
             <thead>
               <tr>
