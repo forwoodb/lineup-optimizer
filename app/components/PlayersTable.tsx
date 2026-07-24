@@ -17,9 +17,6 @@ const PlayersTable = () => {
 
     load();
   }, []);
-  // const DKSalaries = localStorage.getItem("DKSalaries");
-
-  // const csvData: CSVPlayer[] = JSON.parse(DKSalaries);
 
   return (
     <>

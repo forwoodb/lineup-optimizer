@@ -1,17 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LineupPlayer, CSVPlayer } from "../lib/types";
 
 const Optimizer = () => {
   const [lineup, setLineup] = useState<LineupPlayer[]>();
+  const [csvData, setCsvData] = useState<CSVPlayer[]>([]);
 
-  const DKSalaries = localStorage.getItem("DKSalaries");
+  useEffect(() => {
+    const load = async () => {
+      const DKSalaries = localStorage.getItem("DKSalaries");
+      if (!DKSalaries) return;
 
-  let csvData: CSVPlayer[];
-  if (DKSalaries) {
-    csvData = JSON.parse(DKSalaries);
-  }
+      const parsed = JSON.parse(DKSalaries);
+      setCsvData(parsed); // now async → safe
+    };
+
+    load();
+  }, []);
 
   const generateLineup = async () => {
     const res = await fetch("/api/optimize", {
