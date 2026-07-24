@@ -12,17 +12,20 @@ import { ChangeEvent } from "react";
 import Papa from "papaparse";
 
 const OptimizerClient = () => {
-  // const DKSalaries = localStorage.getItem("DKSalaries");
-  // // const csvFile = fs.readFileSync("./app/python/csv-data/DKSalaries.csv");
-  // // const csvData: CSVPlayer[] = parse(csvFile, {
-  // //   columns: true,
-  // //   skip_empty_lines: true,
-  // // });
+  const [csvData, setCsvData] = useState<CSVPlayer[]>([]);
 
-  // let csvData;
-  // if (DKSalaries) {
-  //   csvData = JSON.parse(DKSalaries);
-  // }
+  useEffect(() => {
+    const load = async () => {
+      const DKSalaries = localStorage.getItem("DKSalaries");
+      if (!DKSalaries) return;
+
+      const parsed = JSON.parse(DKSalaries);
+      setCsvData(parsed); // now async → safe
+    };
+
+    load();
+  }, []);
+
   const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
@@ -33,10 +36,12 @@ const OptimizerClient = () => {
       skipEmptyLines: true,
       complete: (results) => {
         localStorage.setItem("DKSalaries", JSON.stringify(results.data));
+        setCsvData(results.data as CSVPlayer[]);
         console.log("Saved: ", results.data);
       },
     });
   };
+
   return (
     <div>
       <h1>Optimizer Client</h1>
@@ -44,11 +49,11 @@ const OptimizerClient = () => {
         <div className="flex-2">
           {/* <FileUploadSC /> */}
           <FileUpload handleUpload={handleUpload} />
-          <PlayersTable />
+          <PlayersTable csvData={csvData} />
           {/* <PlayersTable csvData={csvData} /> */}
         </div>
         <div className="flex-1 ">
-          <Optimizer />
+          <Optimizer csvData={csvData} />
         </div>
       </div>
     </div>

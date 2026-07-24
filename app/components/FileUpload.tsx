@@ -3,7 +3,7 @@
 import { ChangeEvent } from "react";
 
 interface FileUploadPropTypes {
-  handleUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
+  handleUpload: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FileUpload = ({ handleUpload }: FileUploadPropTypes) => {

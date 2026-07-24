@@ -1,30 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LineupPlayer, CSVPlayer } from "../lib/types";
 
-const Optimizer = () => {
+interface OptimizerPropTypes {
+  csvData: CSVPlayer[];
+}
+
+const Optimizer = ({ csvData }: OptimizerPropTypes) => {
   const [lineup, setLineup] = useState<LineupPlayer[]>();
-  const [csvData, setCsvData] = useState<CSVPlayer[]>([]);
-
-  useEffect(() => {
-    const load = async () => {
-      const DKSalaries = localStorage.getItem("DKSalaries");
-      if (!DKSalaries) return;
-
-      const parsed = JSON.parse(DKSalaries);
-      setCsvData(parsed); // now async → safe
-    };
-
-    load();
-  }, []);
 
   const generateLineup = async () => {
+    console.log("click");
+
     const res = await fetch("/api/optimize", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(csvData),
     });
+
+    if (!res.ok) {
+      console.error(await res.text());
+      return;
+    }
 
     const data = await res.json();
     setLineup(data);
