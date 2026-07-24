@@ -1,22 +1,12 @@
 "use client";
+
 import { ChangeEvent } from "react";
-import Papa from "papaparse";
 
-const FileUpload = () => {
-  const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+interface FileUploadPropTypes {
+  handleUpload: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
+}
 
-    if (!file) return;
-
-    Papa.parse(file, {
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        localStorage.setItem("DKSalaries", JSON.stringify(results.data));
-        console.log("Saved: ", results.data);
-      },
-    });
-  };
+const FileUpload = ({ handleUpload }: FileUploadPropTypes) => {
   return (
     <>
       <fieldset className="fieldset">
