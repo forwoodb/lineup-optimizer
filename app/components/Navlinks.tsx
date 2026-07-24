@@ -1,17 +1,17 @@
 "use client";
-import { useState } from "react";
+// import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navlinks = () => {
-  const [active, setActive] = useState("/");
+  const pathname = usePathname();
 
   return (
     <>
       <li>
         <Link
           href={`/`}
-          onClick={() => setActive("/")}
-          className={`${active === "/" && "bg-base-200 border-b border-black"}`}
+          className={`${pathname === "/" && "bg-base-200 border-b border-black"}`}
         >
           Home
         </Link>
@@ -19,8 +19,7 @@ const Navlinks = () => {
       <li>
         <Link
           href={`/optimizer`}
-          onClick={() => setActive("/optimizer")}
-          className={`${active === "/optimizer" && "bg-base-200 border-b border-black"}`}
+          className={`${pathname === "/optimizer" && "bg-base-200 border-b border-black"}`}
         >
           Optimizer
         </Link>
@@ -28,8 +27,7 @@ const Navlinks = () => {
       <li>
         <Link
           href={`/projections`}
-          onClick={() => setActive("/projections")}
-          className={`${active === "/projections" && "bg-base-200 border-b border-black"}`}
+          className={`${pathname === "/projections" && "bg-base-200 border-b border-black"}`}
         >
           Projections
         </Link>
