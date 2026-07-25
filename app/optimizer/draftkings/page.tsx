@@ -1,4 +1,4 @@
-import OptimizerClient from "../components/OptimizerClient";
+import OptimizerClient from "../../components/OptimizerClient";
 
 const OptimizerPage = () => {
   return (
