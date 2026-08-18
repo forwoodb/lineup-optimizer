@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
-  const res = await fetch("http://127.0.0.1:8000/optimize", {
+  // const res = await fetch("http://127.0.0.1:8000/optimize", {
+  const res = await fetch("py-optimizer.vercel.app/optimize", {
     method: "POST",
     headers: {
       "content-type": "application/json",
